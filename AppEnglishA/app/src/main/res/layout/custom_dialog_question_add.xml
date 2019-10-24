@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/edtQuestionName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nhập câu hỏi"
+        android:inputType="textPersonName"
+         />
+
+    <EditText
+        android:id="@+id/edtSchemes_A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nhập phương án A"
+        android:inputType="textPersonName"
+         />
+
+    <EditText
+        android:id="@+id/edtSchemes_B"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nhập phương án B"
+        android:inputType="textPersonName"
+       />
+
+    <EditText
+        android:id="@+id/edtSchemes_C"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nhập phương án C"
+        android:inputType="textPersonName"
+        />
+
+    <EditText
+        android:id="@+id/edtSchemes_D"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nhập phương án D"
+        android:inputType="textPersonName"
+        />
+
+    <LinearLayout
+        android:padding="5dp"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="0.7"
+            android:layout_width="0dp"
+            android:ems="10"
+            android:layout_height="match_parent"
+            android:text="Trả Lời:"
+            />
+        <Spinner
+            android:layout_weight="1.3"
+            android:id="@+id/spnAnsert"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            />
+
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/edtExplain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Giải Thích"
+        android:inputType="textPersonName"
+       />
+
+    <Button
+        android:id="@+id/btnDone"
+        android:text="Done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
