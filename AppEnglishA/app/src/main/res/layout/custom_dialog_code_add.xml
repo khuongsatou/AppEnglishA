@@ -8,14 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Thêm question..."
+
         />
 
     <Button
         android:id="@+id/btnDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#333"
+        android:textColor="#fff"
         android:text="Xong" />
 
 </LinearLayout>

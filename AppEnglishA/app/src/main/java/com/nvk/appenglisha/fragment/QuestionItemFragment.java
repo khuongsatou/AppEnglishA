@@ -243,6 +243,7 @@ public class QuestionItemFragment extends Fragment {
                     break;
                 }
             }
+            tvExplain.setVisibility(View.VISIBLE);
             isChecked = true;
         }
     }

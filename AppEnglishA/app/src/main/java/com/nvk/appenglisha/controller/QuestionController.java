@@ -56,6 +56,7 @@ public class QuestionController {
         openDB(permissionRead);
         List<Question> questions = new ArrayList<>();
         Cursor cursor = db.rawQuery(SELECT_ALL  + " AND "+COLUMN_CODE_ID+" = "+code_id, null);
+        //Log.d("AAAA")
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()){
@@ -105,7 +106,7 @@ public class QuestionController {
         return question;
     }
 
-    public void insertQuestion(Question question) {
+    public Long insertQuestion(Question question) {
         openDB(permissionWrite);
         ContentValues values = new ContentValues();
         values.put(COLUMN_QUESTION_NAME, question.getQuestion_name());
@@ -116,8 +117,9 @@ public class QuestionController {
         values.put(COLUMN_ANSWER, question.getAnswer());
         values.put(COLUMN_EXPLAIN, question.getExplain());
         values.put(COLUMN_CODE_ID,question.getCode_id());
-        db.insert(TABLE_NAME, null, values);
+        long result = db.insert(TABLE_NAME, null, values);
         closeDB();
+        return result;
     }
 
     public void updateQuestion(Question question) {

@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -73,18 +74,20 @@ public class ShowQuestionActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String questionName = edtQuestionName.getText().toString().trim();
+                String questionName = edtQuestionName.getText().toString().trim()+ "?";
                 String[] schemes = new String[4];
                 String explain = edtExplain.getText().toString().trim();
-                boolean checkField = false;
+                if (explain.equals("")){
+                    explain = "Ở đây chúng tôi không cần giải thích...";
+                }
+
                 for (int i = 0; i <schemes.length ; i++) {
                     schemes[i] = edtSchemes[i].getText().toString().trim();
                     if (schemes[i].equals("")){
-                        checkField = true;
                         break;
                     }
                 }
-                if (questionName.equals("") || explain.equals("") || checkField){
+                if (questionName.equals("")){
                     Toast.makeText(getApplicationContext(),"Chưa nhập giá trị",Toast.LENGTH_SHORT).show();
                 }else{
                     Question question = new Question();
@@ -95,10 +98,17 @@ public class ShowQuestionActivity extends AppCompatActivity {
                     question.setSchemes_d(schemes[3]);
                     question.setAnswer(spnAnswer.getSelectedItem().toString());
                     question.setExplain(explain);
-                    controller.insertQuestion(question);
+                    question.setCode_id(code_id);
+
+                    long result = controller.insertQuestion(question);
+                    if (result > 0){
+                        Toast.makeText(getApplicationContext(),"Thêm Thành Công",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getApplicationContext(),"Thêm Thất Bại",Toast.LENGTH_SHORT).show();
+                    }
+                    alertDialog.dismiss();
                     restartQuestion();
                 }
-                alertDialog.dismiss();
             }
         });
         alertDialog.show();

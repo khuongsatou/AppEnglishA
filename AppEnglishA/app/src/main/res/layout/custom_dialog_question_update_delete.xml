@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập câu hỏi"
-        android:inputType="textPersonName"
+        android:textStyle="bold"
+        android:inputType="textCapSentences"
         />
 
     <EditText
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập phương án A"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         />
 
     <EditText
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập phương án B"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         />
 
     <EditText
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập phương án C"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         />
 
     <EditText
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Nhập phương án D"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         />
 
     <LinearLayout
@@ -80,7 +81,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Giải Thích"
-        android:inputType="textPersonName"
+        android:inputType="textCapSentences"
         />
     <LinearLayout
         android:weightSum="2"
@@ -88,17 +89,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:layout_weight="1"
+
             android:id="@+id/btnDelete"
             android:text="Delete"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            style="@style/btnDelete" />
         <Button
-            android:layout_weight="1"
             android:id="@+id/btnUpdate"
             android:text="Update"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            style="@style/btnUpdate" />
 
     </LinearLayout>
 
