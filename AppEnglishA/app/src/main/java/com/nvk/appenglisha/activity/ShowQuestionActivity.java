@@ -54,6 +54,8 @@ public class ShowQuestionActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void showDialogAddQuestion() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         View view = LayoutInflater.from(this).inflate(R.layout.custom_dialog_question_add,null,false);
@@ -74,17 +76,13 @@ public class ShowQuestionActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String questionName = edtQuestionName.getText().toString().trim()+ "?";
+                String questionName = edtQuestionName.getText().toString().trim();
                 String[] schemes = new String[4];
                 String explain = edtExplain.getText().toString().trim();
-                if (explain.equals("")){
-                    explain = "Ở đây chúng tôi không cần giải thích...";
-                }
-
                 for (int i = 0; i <schemes.length ; i++) {
                     schemes[i] = edtSchemes[i].getText().toString().trim();
                     if (schemes[i].equals("")){
-                        break;
+                        v.setVisibility(View.INVISIBLE);
                     }
                 }
                 if (questionName.equals("")){

@@ -122,7 +122,7 @@ public class QuestionController {
         return result;
     }
 
-    public void updateQuestion(Question question) {
+    public long updateQuestion(Question question) {
         openDB(permissionWrite);
         ContentValues values = new ContentValues();
         values.put(COLUMN_QUESTION_NAME, question.getQuestion_name());
@@ -132,8 +132,9 @@ public class QuestionController {
         values.put(COLUMN_SCHEMES_D, question.getSchemes_d());
         values.put(COLUMN_ANSWER, question.getAnswer());
         values.put(COLUMN_EXPLAIN, question.getExplain());
-        db.update(TABLE_NAME, values, COLUMN_ID + " = ?", new String[]{String.valueOf(question.getId())});
+        long result = db.update(TABLE_NAME, values, COLUMN_ID + " = ?", new String[]{String.valueOf(question.getId())});
         closeDB();
+        return result;
     }
 
     public void deleteQuestion(Question question) {

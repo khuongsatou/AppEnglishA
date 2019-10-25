@@ -123,6 +123,8 @@ public class QuestionItemFragment extends Fragment {
         });
     }
 
+
+
     private void showDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
         View view = LayoutInflater.from(context).inflate(R.layout.custom_dialog_question_update_delete,null,false);
@@ -171,17 +173,16 @@ public class QuestionItemFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String questionName = edtQuestionName.getText().toString().trim();
+
                 String[] schemes = new String[4];
                 String explain = edtExplain.getText().toString().trim();
-                boolean checkField = false;
                 for (int i = 0; i <schemes.length ; i++) {
                     schemes[i] = edtSchemes[i].getText().toString().trim();
                     if (schemes[i].equals("")){
-                        checkField = true;
-                        break;
+                        v.setVisibility(View.INVISIBLE);
                     }
                 }
-                if (questionName.equals("") || explain.equals("") || checkField){
+                if (questionName.equals("")){
                     Toast.makeText(context,"Chưa nhập giá trị",Toast.LENGTH_SHORT).show();
                 }else{
                     question.setQuestion_name(questionName);
@@ -191,10 +192,16 @@ public class QuestionItemFragment extends Fragment {
                     question.setSchemes_d(schemes[3]);
                     question.setAnswer(spnAnswer.getSelectedItem().toString());
                     question.setExplain(explain);
-                    controller.updateQuestion(question);
+                    long result= controller.updateQuestion(question);
+                    if(result > 0){
+                        Toast.makeText(context,"Update OK",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(context,"Update Fail",Toast.LENGTH_SHORT).show();
+                    }
                     restartQuestion();
+                    alertDialog.dismiss();
                 }
-                alertDialog.dismiss();
+
             }
         });
 
